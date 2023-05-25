@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerResources : MonoBehaviour
 {
     public GameObject[] playerModels;
+    public GameObject[] playerCollisions;
     public int health = 5;
 
     public Transform gunR;
@@ -13,11 +14,15 @@ public class PlayerResources : MonoBehaviour
     public float fireRate = 0.5f;
     public bool canFire = true;
 
+    public PlayerMovement playerMovement;
     
     // Start is called before the first frame update
     void Start()
     {
-        for(int i = 0; i < playerModels.Length; i++)
+        playerCollisions[0].SetActive(false);
+        playerCollisions[1].SetActive(false);
+
+        for (int i = 0; i < playerModels.Length; i++)
         {
             playerModels[i].SetActive(false);
         }
@@ -48,7 +53,18 @@ public class PlayerResources : MonoBehaviour
 
     public void Damage(int damage)
     {
+        if(health>0 && health<=1)
+        {
+            playerMovement.canMove = false;
+            GetComponent<Rigidbody>().useGravity = true;
+            GetComponent<Rigidbody>().freezeRotation = false;
+            //playerCollisions[0].SetActive(true);
+            //playerCollisions[1].SetActive(true);
+        }
+
         health -= damage;
+
+        
 
         for (int i = 0; i < playerModels.Length; i++)
         {

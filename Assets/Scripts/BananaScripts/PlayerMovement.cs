@@ -14,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 5;
     public float boostSpeed = 10;
 
+    public bool canMove = true;
+
 
     // Start is called before the first frame update
     void Start()
@@ -25,30 +27,31 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
 
-        //Moves player with a mouse
-        float h = Input.GetAxis("Mouse X");
-        float v = Input.GetAxis("Mouse Y");
+       
 
-        LocalMove(h, v, xyspeed);
-        ClampPosition();
-        //RotationalLook(h, v, lookSpeed);
+        
 
-        float ver = Input.GetAxis("Vertical");
-        float hor = Input.GetAxis("Horizontal");
-
-        transform.Translate(new Vector3(hor * moveSpeed * Time.deltaTime, ver * moveSpeed * Time.deltaTime));
-
-        if (Input.GetButton("Jump"))
+        if(canMove)
         {
-            speed = boostSpeed;
+            float ver = Input.GetAxis("Vertical");
+            float hor = Input.GetAxis("Horizontal");
+
+            transform.Translate(new Vector3(hor * moveSpeed * Time.deltaTime, ver * moveSpeed * Time.deltaTime));
+
+            if (Input.GetButton("Jump"))
+            {
+                speed = boostSpeed;
+            }
+
+            else
+            {
+                speed = forwardSpeed;
+            }
+
+            transform.position = transform.position + Vector3.forward * speed * Time.deltaTime;
         }
 
-        else
-        {
-            speed = forwardSpeed;
-        }
-
-        transform.position = transform.position + Vector3.forward * speed * Time.deltaTime;
+        
 
        
     }
@@ -57,13 +60,7 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-    void LocalMove(float x, float y, float speed)
-    {
-        transform.localPosition += new Vector3(x, y, 0) * speed * Time.deltaTime;
-        ClampPosition();
-    }
-
-    //Locks player movement in screen limits
+       //Locks player movement in screen limits
     void ClampPosition()
     {
         Vector3 pos = Camera.main.WorldToViewportPoint(transform.position);
