@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
 
         LocalMove(h, v, xyspeed);
         ClampPosition();
-        RotationalLook(h, v, lookSpeed);
+        //RotationalLook(h, v, lookSpeed);
 
         float ver = Input.GetAxis("Vertical");
         float hor = Input.GetAxis("Horizontal");
@@ -50,8 +50,12 @@ public class PlayerMovement : MonoBehaviour
 
         transform.position = transform.position + Vector3.forward * speed * Time.deltaTime;
 
-
+       
     }
+
+    
+
+
 
     void LocalMove(float x, float y, float speed)
     {
