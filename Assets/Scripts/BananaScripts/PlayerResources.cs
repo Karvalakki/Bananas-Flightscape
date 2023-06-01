@@ -94,6 +94,11 @@ public class PlayerResources : MonoBehaviour
         {
             Damage(1);
         }
+
+        if (other.gameObject.name == "LevelEnd")
+        {
+            Camera.main.GetComponent<LevelManager>().ChangeLevel(0);
+        }
     }
 
    
