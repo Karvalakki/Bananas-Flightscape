@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 4682264000113289013}
   - component: {fileID: 5350051746579219194}
   - component: {fileID: 8443215081589846593}
+  - component: {fileID: 7397449868184780813}
   m_Layer: 0
   m_Name: Shuriken
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -113,5 +114,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f233f918571b314abed717c8eacd1bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 20
+  bulletSpeed: 25.28
   destroyTime: 5
+--- !u!64 &7397449868184780813
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6627682630617106144}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7256147979135254712, guid: 930b5bd8904596845abfb2885fddc890, type: 3}

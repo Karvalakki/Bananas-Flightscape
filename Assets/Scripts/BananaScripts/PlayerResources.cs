@@ -14,6 +14,11 @@ public class PlayerResources : MonoBehaviour
     public float fireRate = 0.5f;
     public bool canFire = true;
 
+    public int shots;
+
+    public float shurikenLeftAngle = 91f;
+    public float shurikenRightAngle = 89f;
+
     public PlayerMovement playerMovement;
     
     // Start is called before the first frame update
@@ -40,11 +45,21 @@ public class PlayerResources : MonoBehaviour
 
     public IEnumerator Shoot()
     {
-        Instantiate(bullet, gunL.position, gunL.rotation);
-        canFire = false;
-        yield return new WaitForSeconds(fireRate);
-        Instantiate(bullet, gunR.position, gunR.rotation);
-        canFire = false;
+        
+        if(shots < 1)
+        {
+            Instantiate(bullet, gunL.position, Quaternion.Euler(0f, shurikenLeftAngle, 0f));
+            canFire = false;
+            shots++;
+        }
+
+        else if(shots > 0)
+        {
+            Instantiate(bullet, gunR.position, Quaternion.Euler(0f, shurikenRightAngle, 0f));
+            canFire = false;
+            shots = 0;
+        }
+        
         yield return new WaitForSeconds(fireRate);
         canFire = true;
         

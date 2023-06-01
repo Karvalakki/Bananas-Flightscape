@@ -16,13 +16,14 @@ public class SpawnBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.forward * bulletSpeed * Time.deltaTime);
+        transform.Translate(transform.forward * -bulletSpeed * Time.deltaTime);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("Enemy"))
         {
+            print("Shot");
             Destroy(other.gameObject);
             Destroy(gameObject);
         }
