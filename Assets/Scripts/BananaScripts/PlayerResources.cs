@@ -20,10 +20,14 @@ public class PlayerResources : MonoBehaviour
     public float shurikenRightAngle = 89f;
 
     public PlayerMovement playerMovement;
+
+    public bool canDamage = false;
     
     // Start is called before the first frame update
     void Start()
     {
+        StartCoroutine("DamageCooldown");
+
         playerCollisions[0].SetActive(false);
         playerCollisions[1].SetActive(false);
 
@@ -92,7 +96,11 @@ public class PlayerResources : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Enemy"))
         {
-            Damage(1);
+            if(canDamage)
+            {
+                Damage(1);
+            }
+            
         }
 
         if (other.gameObject.name == "LevelEnd")
@@ -101,6 +109,11 @@ public class PlayerResources : MonoBehaviour
         }
     }
 
+    public IEnumerator DamageCooldown()
+    {
+        yield return new WaitForSeconds(1);
+        canDamage = true;
+    }
    
 
 

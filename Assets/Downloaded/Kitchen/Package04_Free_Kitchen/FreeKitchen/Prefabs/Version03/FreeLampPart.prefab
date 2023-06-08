@@ -199,6 +199,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7492276037734939042, guid: 8f3b97f8b27c44ca590e09b3db3fad23, type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 11.1
+      objectReference: {fileID: 0}
     - target: {fileID: 7763018606562930542, guid: 8f3b97f8b27c44ca590e09b3db3fad23, type: 3}
       propertyPath: m_Name
       value: FreeLamp
