@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public float forwardSpeed = 5;
     public float moveSpeed = 5;
     public float boostSpeed = 10;
+    public float reducedSpeed = 5;
 
     public bool canMove = true;
 
@@ -27,20 +28,26 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
 
-       
+        transform.position = transform.position + Vector3.forward * speed * Time.deltaTime;
 
-        
 
-        if(canMove)
+
+        if (canMove)
         {
             float ver = Input.GetAxis("Vertical");
             float hor = Input.GetAxis("Horizontal");
 
             transform.Translate(new Vector3(hor * moveSpeed * Time.deltaTime, ver * moveSpeed * Time.deltaTime));
 
+                
+
             if (Input.GetButton("Jump"))
             {
                 speed = boostSpeed;
+            }
+            else if (Input.GetButton("Left ctrl"))
+            {
+                speed = reducedSpeed;
             }
 
             else
@@ -48,12 +55,13 @@ public class PlayerMovement : MonoBehaviour
                 speed = forwardSpeed;
             }
 
-            transform.position = transform.position + Vector3.forward * speed * Time.deltaTime;
+            
+
+
+
         }
 
-        
 
-       
     }
 
     
@@ -61,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
 
 
        //Locks player movement in screen limits
-    void ClampPosition()
+   /* void ClampPosition()
     {
         Vector3 pos = Camera.main.WorldToViewportPoint(transform.position);
         pos.x = Mathf.Clamp01(pos.x);
@@ -75,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
         aimTarget.localPosition = new Vector3(h, v, 1);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(aimTarget.position), Mathf.Deg2Rad * speed);
     }
-
+    
 
 
     private void OnDrawGizmos()
@@ -84,5 +92,5 @@ public class PlayerMovement : MonoBehaviour
         Gizmos.DrawWireSphere(aimTarget.position, .5f);
         Gizmos.DrawSphere(aimTarget.position, .15f);
     }
-
+   */
 }

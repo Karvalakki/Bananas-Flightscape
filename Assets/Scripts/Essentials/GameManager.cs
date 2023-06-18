@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
 
-    public int score = 0;
+    public int score = 1;
+    public int hiScore;
+    public TextMeshProUGUI scoreText;
 
     public static GameManager gameManager;
 
@@ -14,7 +17,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         //GameManager object doesn't destroy when changing scene
-        if(gameManager == null)
+        /*if(gameManager == null)
         {
             DontDestroyOnLoad(gameObject);
             gameManager = this;
@@ -23,7 +26,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        
+        */
     }
 
     // Update is called once per frame
@@ -32,6 +35,17 @@ public class GameManager : MonoBehaviour
         
     }
 
-    
+    public void AddScore()
+    {
+        score += 1;
+        scoreText.text = "Slicecore: "+score.ToString();
+
+        if(score > PlayerPrefs.GetInt("HiScore"))
+        {
+            hiScore = score;
+            PlayerPrefs.SetInt("HiScore", hiScore);
+        }
+
+    }
 
 }

@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 3406445748204253239}
   - component: {fileID: 1176917840836984972}
   - component: {fileID: 274744443660186304}
-  - component: {fileID: 2639941782768502513}
   m_Layer: 0
   m_Name: Shuriken
   m_TagString: Enemy
@@ -117,6 +116,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 25.28
   destroyTime: 5
+  splashEffect: {fileID: 4553287630450876385, guid: 15483e51212e3d74886ea57291f4639a, type: 3}
+  appleHalf1: {fileID: 4575527530811781186, guid: bf9e06963dc11fd478b30f65b71c2c99, type: 3}
+  appleHalf2: {fileID: 6492349148117771591, guid: b1da3406ef627cc4abcbef37bbbb5097, type: 3}
+  gm: {fileID: 0}
 --- !u!64 &274744443660186304
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -131,23 +134,3 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -7256147979135254712, guid: 930b5bd8904596845abfb2885fddc890, type: 3}
---- !u!95 &2639941782768502513
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4504534037460628525}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: baa52c34ec4f1f449bafd7bc93906582, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0

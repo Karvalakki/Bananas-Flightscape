@@ -22,7 +22,8 @@ public class PlayerResources : MonoBehaviour
     public PlayerMovement playerMovement;
 
     public bool canDamage = false;
-    
+
+        
     // Start is called before the first frame update
     void Start()
     {
@@ -100,7 +101,7 @@ public class PlayerResources : MonoBehaviour
             {
                 Damage(1);
             }
-            
+                        
         }
 
         if (other.gameObject.name == "LevelEnd")
